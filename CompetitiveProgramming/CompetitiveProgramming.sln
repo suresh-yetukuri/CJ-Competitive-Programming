@@ -103,6 +103,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AdjacentBitCount", "Adjacen
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LongestCommonSubsequence", "LongestCommonSubsequence\LongestCommonSubsequence.vcxproj", "{795A140E-7BCF-4B66-B594-732F769CA5C8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EditDistance", "EditDistance\EditDistance.vcxproj", "{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -447,6 +449,14 @@ Global
 		{795A140E-7BCF-4B66-B594-732F769CA5C8}.Release|x64.Build.0 = Release|x64
 		{795A140E-7BCF-4B66-B594-732F769CA5C8}.Release|x86.ActiveCfg = Release|Win32
 		{795A140E-7BCF-4B66-B594-732F769CA5C8}.Release|x86.Build.0 = Release|Win32
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Debug|x64.ActiveCfg = Debug|x64
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Debug|x64.Build.0 = Debug|x64
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Debug|x86.Build.0 = Debug|Win32
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Release|x64.ActiveCfg = Release|x64
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Release|x64.Build.0 = Release|x64
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Release|x86.ActiveCfg = Release|Win32
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -494,6 +504,7 @@ Global
 		{16382800-C551-474E-A3E8-44FCF5D582BD} = {52DCE503-42F6-40DC-AB72-EB8B1E142A7D}
 		{66597E3B-8958-4927-9C8E-E178FFAAFA1D} = {52DCE503-42F6-40DC-AB72-EB8B1E142A7D}
 		{795A140E-7BCF-4B66-B594-732F769CA5C8} = {52DCE503-42F6-40DC-AB72-EB8B1E142A7D}
+		{E251D755-9FE5-4BC8-8B58-FD4C70FFD6AE} = {52DCE503-42F6-40DC-AB72-EB8B1E142A7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {707A71F5-B218-4353-86DD-F4EBB3DAA877}
