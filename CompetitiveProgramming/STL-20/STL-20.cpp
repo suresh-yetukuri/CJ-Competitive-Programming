@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include <vector>
 #include <algorithm>
 #include <filesystem>
 #include <utility>
@@ -58,7 +59,9 @@ namespace FileSystem
 
 int main()
 {
-
+    vector<int> pInput{ 1, 2, 3, 4 };
+    sort(pInput.begin(), pInput.end(), greater<int>());
+    sort(pInput.begin(), pInput.end(), less<int>());
     long long x = 0;
     for (int iCounter = 0; iCounter < 10; ++iCounter)
         x |= (1ll << iCounter);
