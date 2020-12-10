@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <functional>
 using namespace std;
 using graph_type = vector<vector<int>>;
 
@@ -60,6 +61,60 @@ void mst_prims(graph_type& pInput, int nVertices, int nEdges)
 }
 
 // Impelement using priority_queue & adjaceny list to optimize
+
+struct node
+{
+	int vertex;
+	int weight;
+};
+
+/*
+(E+V)LogV, V 
+*/
+void mst_prims_opt(vector<vector<node>>& pGraph, int nVertices, int nEdges)
+{
+	vector<int>		pParent(nVertices);
+	vector<int>		pWeight(nVertices, INT_MAX);
+	vector<bool>	pVisited(nVertices, false);
+	auto comparator = [](node& f_node, node& s_node)->bool {
+		return f_node.weight > s_node.weight;
+	}; 
+	priority_queue<node, vector<node>, function<bool(node&, node&)>> pHeap(comparator);
+
+	int source_vertex = 0;
+	pParent[source_vertex] = -1;
+	pWeight[source_vertex] = 0;
+
+	pHeap.push(node{ source_vertex , pWeight[source_vertex] });
+	while (!pHeap.empty())
+	{
+		auto source = pHeap.top();
+		pHeap.pop();
+		pVisited[source.vertex] = true;
+
+		for (auto& pDestNode : pGraph[source.vertex])
+		{
+			if (!pVisited[pDestNode.vertex])
+			{
+				if (pDestNode.weight < pWeight[pDestNode.vertex])
+				{
+					pWeight[pDestNode.vertex] = pDestNode.weight;
+					pParent[pDestNode.vertex] = source.vertex;
+					pHeap.push(node{ pDestNode.vertex, pWeight[pDestNode.vertex] });
+				}
+			}
+		}
+	}
+
+	for (int iCounter = 1; iCounter < nVertices; ++iCounter)
+	{
+		if(iCounter < pParent[iCounter])
+			cout << iCounter << " " << pParent[iCounter] << endl;
+		else
+			cout << pParent[iCounter] << " " << iCounter << endl;
+	}
+}
+
 
 int main()
 {

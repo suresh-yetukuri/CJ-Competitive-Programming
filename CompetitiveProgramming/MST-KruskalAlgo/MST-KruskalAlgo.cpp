@@ -23,7 +23,7 @@ int getParent(vector<int>& pParentArray, int curr_Idx)
 }
 
 /*
-ELogE + E*V
+ELogE + E*V, V
 Cycle Detection: Union Find Algorithm
 */
 void mst_kruskal(vector<node>& pInput, int nVertices, int nEdges)
@@ -58,7 +58,71 @@ void mst_kruskal(vector<node>& pInput, int nVertices, int nEdges)
     }
 }
 
-// Learn Cycle Detection: Union By Rank and Path Compression
+
+/*
+ELogE + ELogV, V
+Cycle Detection: Union By Rank and Path Compression
+*/
+struct disnode
+{
+    int parent;
+    int rank;
+};
+
+int FindParentPlusCompression(vector<disnode>& pParentArray, int target)
+{
+    if (pParentArray[target].parent != target)
+        pParentArray[target].parent = FindParentPlusCompression(pParentArray, pParentArray[target].parent);
+
+    return pParentArray[target].parent;
+}
+
+void Union(vector<disnode>& pParentArray, int sParent, int dParent)
+{
+    if (pParentArray[sParent].rank < pParentArray[dParent].rank)
+        pParentArray[sParent].parent = dParent;
+    else if(pParentArray[sParent].rank > pParentArray[dParent].rank)
+        pParentArray[dParent].parent = sParent;
+    else
+    {
+        pParentArray[dParent].parent = sParent;
+        pParentArray[sParent].rank++;
+    }
+}
+
+void mst_kruskalOpt(vector<node>& pInput, int nVertices, int nEdges)
+{
+    int nCount = 0;
+    vector<node> pMST;
+    vector<disnode> pParentArray(nVertices);
+    for (int iCounter = 0; iCounter < nVertices; ++iCounter) {
+        pParentArray[iCounter].parent = iCounter;
+        pParentArray[iCounter].rank = 0;
+    }
+
+    for (auto& oNode : pInput)
+    {
+        auto srcParent = FindParentPlusCompression(pParentArray, oNode.src);
+        auto destParent = FindParentPlusCompression(pParentArray, oNode.dest);
+
+        if (srcParent != destParent)
+        { 
+            Union(pParentArray, srcParent, destParent);
+            pMST.push_back(oNode);
+            ++nCount;
+        }
+
+        if (nCount == nVertices - 1)
+            break;
+    }
+
+    for (auto& oNode : pMST) {
+        if (oNode.src > oNode.dest)
+            swap(oNode.src, oNode.dest);
+
+        cout << oNode.src << " " << oNode.dest << " " << oNode.weight << endl;
+    }
+}
 
 int main()
 {
@@ -73,7 +137,7 @@ int main()
         return fnode.weight < snode.weight;
         });
 
-    mst_kruskal(pInput, nVertices, nEdges);
+    mst_kruskalOpt(pInput, nVertices, nEdges);
 
     return 0;
 }

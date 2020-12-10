@@ -191,6 +191,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MST_PrimsAlgo", "MST_PrimsA
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DijkstrasAlgo", "DijkstrasAlgo\DijkstrasAlgo.vcxproj", "{D0277C7C-0BEF-44FC-A882-38686D2F4E39}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PermutationSwaps", "PermutationSwaps\PermutationSwaps.vcxproj", "{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -831,6 +833,14 @@ Global
 		{D0277C7C-0BEF-44FC-A882-38686D2F4E39}.Release|x64.Build.0 = Release|x64
 		{D0277C7C-0BEF-44FC-A882-38686D2F4E39}.Release|x86.ActiveCfg = Release|Win32
 		{D0277C7C-0BEF-44FC-A882-38686D2F4E39}.Release|x86.Build.0 = Release|Win32
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Debug|x64.ActiveCfg = Debug|x64
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Debug|x64.Build.0 = Debug|x64
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Debug|x86.Build.0 = Debug|Win32
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Release|x64.ActiveCfg = Release|x64
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Release|x64.Build.0 = Release|x64
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Release|x86.ActiveCfg = Release|Win32
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -918,6 +928,7 @@ Global
 		{D8D7122F-F87E-454E-B49C-7B565F45FBEB} = {CE6DF140-537A-4E4A-AB6B-B16FC85867EF}
 		{A492B789-1E0F-4BB9-9FA7-5EC5022C2615} = {CE6DF140-537A-4E4A-AB6B-B16FC85867EF}
 		{D0277C7C-0BEF-44FC-A882-38686D2F4E39} = {CE6DF140-537A-4E4A-AB6B-B16FC85867EF}
+		{F0EC5DA1-5A59-4454-92F2-6FE4AB0E94D8} = {C7AD6CAE-059D-4447-9872-60C22F06BE38}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {707A71F5-B218-4353-86DD-F4EBB3DAA877}

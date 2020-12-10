@@ -20,7 +20,6 @@ int getMinVertex(vector<bool>& visited, vector<int>& distance)
 	return min_distance_vertex;
 }
 
-
 void dijkstras(graph_type& pInput, int nVertices, int nEdges)
 {
 	vector<bool> visited(nVertices, false);
@@ -50,12 +49,54 @@ void dijkstras(graph_type& pInput, int nVertices, int nEdges)
 		cout << iCounter << " " << distance[iCounter] << endl;
 }
 
+
+void GetPath(vector<int>& parent, int destination)
+{
+	if (destination == -1) 
+		return;
+
+	GetPath(parent, parent[destination]);
+	cout << destination << " ";
+	return;
+}
+
+void DijkstrasOpt(vector<vector<pair<int, int>>>& pGraph, int nVertices)
+{ 
+	vector<int> distance(nVertices, INT_MAX);
+	vector<int> parent(nVertices);
+	priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pHeap;
+
+	distance[0] = 0;
+	parent[0] = -1;
+	pHeap.push(make_pair(0, 0));
+	while (!pHeap.empty())
+	{
+		int source_vertex = pHeap.top().second;
+		pHeap.pop();
+
+		for (int iCounter = 0; iCounter < pGraph[source_vertex].size(); ++iCounter)
+		{
+			auto destination = pGraph[source_vertex][iCounter];
+			if (distance[destination.first] > (distance[source_vertex] + destination.second))
+			{
+				distance[destination.first] = distance[source_vertex] + destination.second;
+				parent[destination.first] = source_vertex;
+				pHeap.push(make_pair(distance[destination.first], destination.first));
+			}
+		}
+	}
+
+	for (int iCounter = 0; iCounter < nVertices; ++iCounter)
+		cout << iCounter << " " << distance[iCounter] << endl;
+}
+
+
 int main()
 {
 	int nVertices = 0;
 	int nEdges = 0;
 	cin >> nVertices >> nEdges;
-	graph_type pGraph(nVertices, vector<int>(nVertices, 0));
+	/*graph_type pGraph(nVertices, vector<int>(nVertices, 0));
 	for (int iCounter = 0; iCounter < nEdges; ++iCounter)
 	{
 		int u, v, d;
@@ -65,7 +106,17 @@ int main()
 	}
 
 	cout << endl;
-	dijkstras(pGraph, nVertices, nEdges);
+	dijkstras(pGraph, nVertices, nEdges);*/
+	vector<vector<pair<int, int>>> pGraph(nVertices);
+	for (int iCounter = 0; iCounter < nEdges; ++iCounter)
+	{
+		int u, v, d;
+		cin >> u >> v >> d;
+		pGraph[u].push_back(make_pair(v, d));
+		pGraph[v].push_back(make_pair(u, d));
+	}
+
+	DijkstrasOpt(pGraph, nVertices);
 	return 0;
 }
 
